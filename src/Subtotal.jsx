@@ -1,9 +1,12 @@
-import React from "react";
-import CurrencyFormat from "react-currency-format";
-import "./Subtotal.css";
-import { getBasketTotal } from "./reducer";
+import React from 'react';
+import CurrencyFormat from 'react-currency-format';
+import './Subtotal.css';
+import { getBasketTotal } from './reducer';
+import { useHistory } from 'react-router-dom';
 
 function Subtotal({ basket }) {
+  const history = useHistory();
+
   return (
     <div className="subtotal">
       <CurrencyFormat
@@ -21,11 +24,13 @@ function Subtotal({ basket }) {
         )}
         decemalScale={2}
         value={getBasketTotal(basket)}
-        displayType={"text"}
+        displayType={'text'}
         thousandSeparator={true}
-        prefix={"£"}
+        prefix={'£'}
       />
-      <button>Proceed to Checkout!</button>
+      <button onClick={() => history.push('/payment')}>
+        Proceed to Checkout!
+      </button>
     </div>
   );
 }

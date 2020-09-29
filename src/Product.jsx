@@ -1,13 +1,13 @@
-import React from "react";
-import "./Product.css";
-import { useStateValue } from "./StateProvider";
+import React from 'react';
+import './Product.css';
+import { useStateValue } from './StateProvider';
 
 function Product({ id, title, image, price, rating }) {
   const [{ basket }, dispatch] = useStateValue();
   const addToBasket = () => {
     // dispatch the items from data Layer
     dispatch({
-      type: "ADD_TO_BASKET",
+      type: 'ADD_TO_BASKET',
       item: {
         id,
         title,
@@ -31,7 +31,7 @@ function Product({ id, title, image, price, rating }) {
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <span role="img" aria-labelledby="start emoji">
+              <span role="img" key={i} aria-labelledby="start emoji">
                 ⭐
               </span>
             ))}

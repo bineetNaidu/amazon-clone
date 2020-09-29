@@ -1,11 +1,11 @@
-import React from "react";
-import "./CheckoutProduct.css";
-import { useStateValue } from "./StateProvider";
+import React from 'react';
+import './CheckoutProduct.css';
+import { useStateValue } from './StateProvider';
 function CheckoutProduct({ id, image, price, rating, title }) {
   const [{ basket }, dispatch] = useStateValue();
   const removeFromBasket = () => {
     dispatch({
-      type: "REMOVE_FROM_BASKET",
+      type: 'REMOVE_FROM_BASKET',
       id,
     });
   };
@@ -23,7 +23,7 @@ function CheckoutProduct({ id, image, price, rating, title }) {
           {Array(rating)
             .fill()
             .map((_, i) => (
-              <span role="img" aria-labelledby="start emoji">
+              <span role="img" key={i} aria-labelledby="start emoji">
                 ⭐
               </span>
             ))}
